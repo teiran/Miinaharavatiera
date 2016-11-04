@@ -5,3 +5,7 @@ Klikkaamalla vasenta hiiren nappulaa voit merkata lipun ruutuun jossa on miina, 
 ###Käyttäjät: miinaharavan pelaaja
 ####miinaharavankäyttäjä (kaikki käyttäjät)
 
+* pelin aloittamineen
+* ruudun painaminen vasemmalla hiiren nappulalla
+   * häviää pelin tai avaa ruudun jonka vieressä miina tai avaa alueen jolla ruutuja joiden vieressäei miinoja ja näiden vieressä olevat ruudut
+* ruudun painaminen oikealla hiiren nappulalla
