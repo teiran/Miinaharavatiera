@@ -49,6 +49,9 @@ public class RuudukkoAvatutuSuljetut {
     public void lippu(int x, int y){
         kartta[x][y].asetalippu();
     }
+    public void poistaLippu(int x, int y){
+        kartta[x][y].poistalippu();
+    }
 
     private void etosunutmiinaan(int x, int y) { // alempi(rekursiivinen osa ei toimi vielä)
         kartta[x][y].avaa();
@@ -74,7 +77,9 @@ public class RuudukkoAvatutuSuljetut {
         int[][] t = new int[korkeus][leveys];
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
-                if (kartta[i][j].isOnkoAuki()) {
+                if (kartta[i][j].onkolippua()) {
+                        t[i][j] = -3;
+                } else if (kartta[i][j].isOnkoAuki()) {
                     if (kartta[i][j].isOnkoMiinaa()) {
                         t[i][j] = -2;
                     } else {
