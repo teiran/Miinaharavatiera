@@ -31,7 +31,7 @@ public class Ruudunkuuntelija implements MouseListener {
     public void mouseClicked(java.awt.event.MouseEvent e) {
         if (e.getButton() == 1) {
             k.setPainettu(1);
-        } else if (e.getButton() == 2) {
+        } else if (e.getButton() == 3) {
             k.setPainettu(2);
         }
         
@@ -39,22 +39,21 @@ public class Ruudunkuuntelija implements MouseListener {
 
     @Override
     public void mousePressed(java.awt.event.MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void mouseReleased(java.awt.event.MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void mouseEntered(java.awt.event.MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseExited(java.awt.event.MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
 }
