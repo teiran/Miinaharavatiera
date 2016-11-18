@@ -5,7 +5,9 @@
  */
 package logiikka;
 
+import grafiikka.Kayttoliityma;
 import java.util.Scanner;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -17,8 +19,13 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+
+        Kayttoliityma kayttoliittyma = new Kayttoliityma();
+        SwingUtilities.invokeLater(kayttoliittyma);
+
+        /*
         Scanner lukija = new Scanner(System.in);
-        RuudukkoAvatutuSuljetut j = new RuudukkoAvatutuSuljetut(10, 5, 40);
+        RuudukkoAvatutuSuljetut j = new RuudukkoAvatutuSuljetut(10, 5, 0);
         System.out.println(j.toString());
         
         while (true){
@@ -31,7 +38,7 @@ public class NewMain {
             System.out.println(j);
             
         }
-        
+         */
     }
 
 }

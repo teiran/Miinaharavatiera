@@ -70,6 +70,20 @@ public class RuutuTest {
         instance.avaa();
         assertEquals(instance.isOnkoAuki(), true);
     }
+    
+    @Test
+    public void testLippu(){
+        System.out.println("lippu");
+        Ruutu instance = new Ruutu();
+        instance.asetalippu();
+        assertEquals(instance.onkolippua(), true);
+        instance.avaa();
+        assertEquals(instance.isOnkoAuki(), false);
+        instance.poistalippu();
+        assertEquals(instance.onkolippua(), false);
+        instance.avaa();
+        assertEquals(instance.isOnkoAuki(), true);
+    }
 
 
 }

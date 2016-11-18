@@ -13,15 +13,28 @@ public class Ruutu {
     private boolean onkoMiinaa;
     private int miinojenLukumaaraYmparilla;
     private boolean onkoAuki;
+    private boolean lippu;
 
     public Ruutu() {
         onkoMiinaa = false;
         miinojenLukumaaraYmparilla= 0;
         onkoAuki = false;
+        lippu = false;
+    }
+    
+    public void asetalippu(){
+        lippu = true;
+    }
+    public void poistalippu(){
+        lippu = false;
     }
     
     public void asetamiina(){
         onkoMiinaa = true;
+    }
+    
+    public boolean onkolippua(){
+        return lippu;
     }
     
     public void laskemiinat(int miinat){
@@ -29,7 +42,9 @@ public class Ruutu {
     }
     
     public void avaa(){
-        onkoAuki = true;
+        if (!lippu) {
+            onkoAuki = true;
+        }
         
     }
     

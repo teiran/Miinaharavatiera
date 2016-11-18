@@ -26,6 +26,9 @@ public class RuudukkoAvatutuSuljetut {
 
     public void avaaruutu(int x, int y) {
         Ruutu k = kartta[x][y];
+        if (k.onkolippua()) {
+            return;
+        }
         if (k.isOnkoMiinaa()) {
             osuitmiinan();
         } else {
@@ -42,33 +45,25 @@ public class RuudukkoAvatutuSuljetut {
             }
         }
     }
+    
+    public void lippu(int x, int y){
+        kartta[x][y].asetalippu();
+    }
 
     private void etosunutmiinaan(int x, int y) { // alempi(rekursiivinen osa ei toimi vielä)
         kartta[x][y].avaa();
-        for (int k = -1; k < 2; k++) {
-            int rajax = x + k;
-            if (rajax >= 0 && rajax < korkeus) {
-                for (int l = -1; l < 2; l++) {
-                    int rajay = y + l;
-                    if (rajay >= 0 && rajay < leveys) {
-                        if (!kartta[rajax][rajay].isOnkoMiinaa() && kartta[rajax][rajay].getMiinojenLukumaaraYmparilla() == 0) {
-                            etosunutmiinaan(rajax, rajay);
-                            avaavierusruudut(rajax, rajay);
-                        }
-                    }
-                }
-            }
+        if (kartta[x][y].getMiinojenLukumaaraYmparilla() != 0) {
+            return;
         }
-    }
-
-    private void avaavierusruudut(int x, int y) {
         for (int k = -1; k < 2; k++) {
             int rajax = x + k;
             if (rajax >= 0 && rajax < korkeus) {
                 for (int l = -1; l < 2; l++) {
                     int rajay = y + l;
                     if (rajay >= 0 && rajay < leveys) {
-                        kartta[rajax][rajay].avaa();
+                        if (!kartta[x][y].isOnkoAuki()) {
+                            etosunutmiinaan(rajax, rajay);
+                        }
                     }
                 }
             }
