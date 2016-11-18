@@ -6,4 +6,5 @@ Päivä | Tunnit | Kuvaus
 05.11.2016 | 1h | logiikan suunitelua
 06.11.2016 | 1h | logiikan suunitelua
 07.11.2016 | 6h | logiikan ja tesiten tekemistä ja vähän muuta
+18.11.2016 | 6h | testejen tekemistä ja grafiikan tekemistä ja pieniä korjauksia logiikkaan
 ... | ... | ...
