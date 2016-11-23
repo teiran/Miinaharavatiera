@@ -54,18 +54,22 @@ public class Kayttoliityma implements Runnable{
         
     }
     
-    public void peli(){
+    public void peli(RuutuButton ruutu, int f){
+        if (logiikka.isOnkomiinatavattu()) {
+            return;
+        }
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
-                if (ruudut[i][j].getPainettu() == 1) {
-                    logiikka.avaaruutu(i, j);
-                    ruudut[i][j].setPainettu(0);
-                } else if (ruudut[i][j].getPainettu() == 2) {
-                    logiikka.lippu(i, j);
-                    ruudut[i][j].setPainettu(0);
+                if (ruudut[i][j] == ruutu) {
+                    if (f == 1) {
+                        logiikka.avaaruutu(i, j);
+                    } else if (f == 2) {
+                        logiikka.lippu(i, j);
+                    }
                 }
             }
         }
+        
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
                 ruudut[i][j].setArvo(logiikka.kartta()[i][j]);

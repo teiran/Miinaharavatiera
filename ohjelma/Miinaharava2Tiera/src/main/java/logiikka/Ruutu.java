@@ -23,10 +23,15 @@ public class Ruutu {
     }
     
     public void asetalippu(){
-        lippu = true;
-    }
-    public void poistalippu(){
-        lippu = false;
+        if (onkoAuki) {
+            return;
+        }
+        if (lippu) {
+            lippu = false;
+        } else {
+            lippu = true;
+        }
+        
     }
     
     public void asetamiina(){

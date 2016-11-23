@@ -32,8 +32,6 @@ public class Kartanluonti {
     public Ruutu[][] getKartta() {
         return kartta;
     }
-    
-    
 
     private void luokartta() {
         for (int i = 0; i < korkeus; i++) {
@@ -62,25 +60,29 @@ public class Kartanluonti {
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
                 if (!kartta[i][j].isOnkoMiinaa()) {
-                    int summa = 0;
-                    for (int k = -1; k < 2; k++) {
-                        int rajax =i+k;
-                        if (rajax >= 0 && rajax < korkeus) {
-                            for (int l = -1; l < 2; l++) {
-                                int rajay = j+l;
-                                if (rajay >= 0 && rajay < leveys) {
-                                    if (kartta[rajax][rajay].isOnkoMiinaa()) {
-                                        summa++;
-                                    }
-                                }
-                            }
-                        }
-
-                    }
-                    kartta[i][j].laskemiinat(summa);
+                    laskemiinat(i, j);
                 }
             }
         }
+    }
+
+    private void laskemiinat(int x, int y) {
+        int summa = 0;
+        for (int k = -1; k < 2; k++) {
+            int rajax = x + k;
+            if (rajax >= 0 && rajax < korkeus) {
+                for (int l = -1; l < 2; l++) {
+                    int rajay = y + l;
+                    if (rajay >= 0 && rajay < leveys) {
+                        if (kartta[rajax][rajay].isOnkoMiinaa()) {
+                            summa++;
+                        }
+                    }
+                }
+            }
+
+        }
+        kartta[x][y].laskemiinat(summa);
     }
 
     @Override

@@ -13,21 +13,21 @@ import javax.swing.JButton;
  */
 public class RuutuButton extends JButton {
     private int arvo;
-    private int painettu;
     private Kayttoliityma k;
 
     public RuutuButton(int arvo, Kayttoliityma k1) {
         this.arvo = arvo;
-        painettu = 0;
         muutatextia();
         k = k1;
     }
     
     private void muutatextia(){
-        if (arvo == -1) {
+        if (arvo == -1 || arvo == 0) {
             this.setText(" ");
         } else if (arvo == -2) {
             this.setText("M");
+        } else if (arvo == -3) {
+            this.setText("L");
         } else {
             this.setText("" + arvo + "");
         }
@@ -39,14 +39,10 @@ public class RuutuButton extends JButton {
     }
 
     public void setPainettu(int painettu) {
-        this.painettu = painettu;
-        k.peli();
-        
+        k.peli(this, painettu);
     }
 
-    public int getPainettu() {
-        return painettu;
-    }
+    
 
     
 }

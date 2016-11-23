@@ -74,7 +74,7 @@ public class RuudukkoAvatutuSuljetutTest {
                 assertEquals(-3, instance.kartta()[x][y]);
                 instance.avaaruutu(x, y);
                 assertEquals(-3, instance.kartta()[x][y]);
-                instance.poistaLippu(x, y);
+                instance.lippu(x, y);
                 assertEquals(-1, instance.kartta()[x][y]);
                 instance.avaaruutu(x, y);
                 assertEquals(true, (instance.kartta()[x][y] > -3) && instance.kartta()[x][y] != -1);

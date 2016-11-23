@@ -79,7 +79,7 @@ public class RuutuTest {
         assertEquals(instance.onkolippua(), true);
         instance.avaa();
         assertEquals(instance.isOnkoAuki(), false);
-        instance.poistalippu();
+        instance.asetalippu();
         assertEquals(instance.onkolippua(), false);
         instance.avaa();
         assertEquals(instance.isOnkoAuki(), true);
