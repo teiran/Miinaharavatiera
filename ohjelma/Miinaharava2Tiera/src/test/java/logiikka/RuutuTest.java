@@ -84,6 +84,30 @@ public class RuutuTest {
         instance.avaa();
         assertEquals(instance.isOnkoAuki(), true);
     }
+    
+    @Test
+    public void testtoString(){
+        System.out.println("toString");
+        Ruutu k = new Ruutu();
+        assertEquals(k.toString(), " ");
+        k.asetalippu();
+        assertEquals(k.toString(), "L");
+        k.laskemiinat(3);
+        k.asetalippu();
+        assertEquals(k.toString(), " ");
+        k.avaa();
+        assertEquals(Integer.parseInt(k.toString()), 3);
+        k = new Ruutu();
+        k.laskemiinat(0);
+        k.avaa();
+        assertEquals(k.toString(), " ");
+        k = new Ruutu();
+        k.asetamiina();
+        k.avaa();
+        assertEquals(k.toString(), "M");
+        
+        
+    }
 
 
 }

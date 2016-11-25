@@ -17,7 +17,10 @@ import org.w3c.dom.events.MouseEvent;
 public class Ruudunkuuntelija implements MouseListener {
     
     private RuutuButton k;
-
+    /**
+     * 
+     * @param k likkin kuuneltavaan ruutuun 
+     */
     public Ruudunkuuntelija(RuutuButton k) {
         this.k = k;
     }
@@ -25,7 +28,10 @@ public class Ruudunkuuntelija implements MouseListener {
 
  
 
-  
+    /**
+     * 
+     * @param e kuutelee onko painettu kumpaa hiiren nappulaa 
+     */
 
     @Override
     public void mouseClicked(java.awt.event.MouseEvent e) {

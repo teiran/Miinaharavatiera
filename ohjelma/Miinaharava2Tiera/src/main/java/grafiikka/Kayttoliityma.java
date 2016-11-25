@@ -11,38 +11,39 @@ import java.awt.GridLayout;
 import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
+import logiikka.Kartanluonti;
 import logiikka.RuudukkoAvatutuSuljetut;
 
 /**
  *
  * @author tiera
  */
-public class Kayttoliityma implements Runnable{
-    
+public class Kayttoliityma implements Runnable {
+
     private JFrame frame;
     private RuudukkoAvatutuSuljetut logiikka;
     private RuutuButton[][] ruudut;
     private int korkeus;
     private int leveys;
+    /**
+     * 
+     * @param k logiikkan käyttöliitymä
+     * @param korkeus kentän korkeus
+     * @param leveys  kentän leveys
+     */
+    public Kayttoliityma(RuudukkoAvatutuSuljetut k, int korkeus, int leveys) {
+        this.korkeus = korkeus;
+        this.leveys = leveys;
+        logiikka = k;
 
-    public Kayttoliityma() {
-        Scanner lukija = new Scanner(System.in);
-        System.out.println("Ruudukon leveys ");
-        korkeus = Integer.parseInt(lukija.nextLine());
-        System.out.println("Ruudukon korkeus ");
-        leveys = Integer.parseInt(lukija.nextLine());
-        System.out.println("Miinojen maara ");
-        int m = Integer.parseInt(lukija.nextLine());
-        logiikka = new RuudukkoAvatutuSuljetut(korkeus, leveys, m);
-        
     }
-    
-    
-    
+    /**
+     * alustaa käyttöliitymän
+     */
     @Override
     public void run() {
         frame = new JFrame("Sudoku");
-        frame.setPreferredSize(new Dimension(1000, 1000));
+        frame.setPreferredSize(new Dimension(100 * korkeus, 100 * leveys));
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,44 +51,46 @@ public class Kayttoliityma implements Runnable{
 
         frame.pack();
         frame.setVisible(true);
-        
-        
-    }
-    
-    public void peli(RuutuButton ruutu, int f){
+
+    }   
+    /**
+     * Peli looppi
+     * 
+     * @param ruutu graafinenruutu mitä ollan painettu
+     * @param f kummalla hiiren näppäimellä ollaan painettu
+     */
+    public void peli(RuutuButton ruutu, int f) {
         if (logiikka.isOnkomiinatavattu()) {
             return;
         }
-        for (int i = 0; i < korkeus; i++) {
-            for (int j = 0; j < leveys; j++) {
-                if (ruudut[i][j] == ruutu) {
-                    if (f == 1) {
-                        logiikka.avaaruutu(i, j);
-                    } else if (f == 2) {
-                        logiikka.lippu(i, j);
-                    }
-                }
+        int x = ruutu.x();
+        int y = ruutu.y();
+        if (ruudut[x][y] == ruutu) {
+            if (f == 1) {
+                logiikka.avaaruutu(x, y);
+            } else if (f == 2) {
+                logiikka.lippu(x, y);
             }
         }
-        
+
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
-                ruudut[i][j].setArvo(logiikka.kartta()[i][j]);
+                ruudut[i][j].setArvo(logiikka.kartta()[i][j].toString());
             }
         }
     }
-    
-    private void luokomponetti(Container container){
-        frame.setLayout(new GridLayout(10, 10));
+
+    private void luokomponetti(Container container) {
+        frame.setLayout(new GridLayout(korkeus, leveys));
         ruudut = new RuutuButton[korkeus][leveys];
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
-                ruudut[i][j] = new RuutuButton(logiikka.kartta()[i][j],this);
+                ruudut[i][j] = new RuutuButton(logiikka.kartta()[i][j].toString(), this, i, j);
                 Ruudunkuuntelija k = new Ruudunkuuntelija(ruudut[i][j]);
                 ruudut[i][j].addMouseListener(k);
                 container.add(ruudut[i][j]);
             }
         }
     }
-    
+
 }

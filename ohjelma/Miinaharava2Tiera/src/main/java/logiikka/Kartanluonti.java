@@ -17,7 +17,12 @@ public class Kartanluonti {
     private int leveys;
     private int miinojenMaara;
     private Ruutu[][] kartta;
-
+    /**
+     * 
+     * @param korkeus kentän korkeus
+     * @param leveys kentän leveys
+     * @param miinojenMaara Miinojen määrä
+     */
     public Kartanluonti(int korkeus, int leveys, int miinojenMaara) {
         this.korkeus = korkeus;
         this.leveys = leveys;
@@ -28,7 +33,10 @@ public class Kartanluonti {
         laskemiinat();
 
     }
-
+    /**
+     * 
+     * @return palauttaa valmiiksi alustetun  kentän
+     */
     public Ruutu[][] getKartta() {
         return kartta;
     }
@@ -68,37 +76,15 @@ public class Kartanluonti {
 
     private void laskemiinat(int x, int y) {
         int summa = 0;
-        for (int k = -1; k < 2; k++) {
-            int rajax = x + k;
-            if (rajax >= 0 && rajax < korkeus) {
-                for (int l = -1; l < 2; l++) {
-                    int rajay = y + l;
-                    if (rajay >= 0 && rajay < leveys) {
-                        if (kartta[rajax][rajay].isOnkoMiinaa()) {
-                            summa++;
-                        }
-                    }
+        for (int rajax = Math.max(x - 1, 0); rajax < Math.min(x + 2, korkeus); rajax++) {
+            for (int rajay = Math.max(y - 1, 0); rajay < Math.min(y + 2, leveys); rajay++) {
+                if (kartta[rajax][rajay].isOnkoMiinaa()) {
+                    summa++;
                 }
             }
 
         }
         kartta[x][y].laskemiinat(summa);
-    }
-
-    @Override
-    public String toString() {
-        String g = "";
-        for (Ruutu[] ruutus : kartta) {
-            for (Ruutu ruutu : ruutus) {
-                if (ruutu.isOnkoMiinaa()) {
-                    g += "" + -1 + " ";
-                } else {
-                    g += "" + ruutu.getMiinojenLukumaaraYmparilla() + "  ";
-                }
-            }
-            g += "\n";
-        }
-        return g;
     }
 
 }

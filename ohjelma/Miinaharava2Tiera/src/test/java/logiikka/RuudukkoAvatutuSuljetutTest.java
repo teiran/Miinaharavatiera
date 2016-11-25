@@ -17,22 +17,22 @@ import static org.junit.Assert.*;
  * @author tiera
  */
 public class RuudukkoAvatutuSuljetutTest {
-
+    
     public RuudukkoAvatutuSuljetutTest() {
     }
-
+    
     @BeforeClass
     public static void setUpClass() {
     }
-
+    
     @AfterClass
     public static void tearDownClass() {
     }
-
+    
     @Before
     public void setUp() {
     }
-
+    
     @After
     public void tearDown() {
     }
@@ -42,22 +42,39 @@ public class RuudukkoAvatutuSuljetutTest {
      */
     @Test
     public void testAvaaruutu() {
-        System.out.println("avaaruutu");
+        System.out.println("avaaruutu1lippu");
         int x = 0;
         int y = 0;
-        RuudukkoAvatutuSuljetut instance = new RuudukkoAvatutuSuljetut(10, 10, 10);
-        instance.avaaruutu(x, y);
-        int summ = 0;
+        Kartanluonti k = new Kartanluonti(10, 10, 0);
+        RuudukkoAvatutuSuljetut instance = new RuudukkoAvatutuSuljetut(10, 10, k);
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                int t = instance.kartta()[i][j];
-                if (t == -2 || t > -1) {
-                    summ++;
-                }
-                assertEquals(true, (t > -4 && t < 9));
+                instance.lippu(i, j);
             }
         }
-
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                instance.avaaruutu(i, j);
+            }
+        }
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                assertEquals(false, instance.kartta()[i][j].isOnkoAuki());
+                assertEquals(true, instance.kartta()[i][j].onkolippua());
+            }
+        }
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                instance.lippu(i, j);
+                instance.avaaruutu(i, j);
+            }
+        }
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                assertEquals(true, instance.kartta()[i][j].isOnkoAuki());
+                assertEquals(false, instance.kartta()[i][j].onkolippua());
+            }
+        }
     }
 
     /**
@@ -65,22 +82,68 @@ public class RuudukkoAvatutuSuljetutTest {
      */
     @Test
     public void testLippu() {
-        System.out.println("lippu");
-        
-        for (int x = 0; x < 10; x++) {
-            for (int y = 0; y < 10; y++) {
-                RuudukkoAvatutuSuljetut instance = new RuudukkoAvatutuSuljetut(10, 10, 10);
-                instance.lippu(x, y);
-                assertEquals(-3, instance.kartta()[x][y]);
-                instance.avaaruutu(x, y);
-                assertEquals(-3, instance.kartta()[x][y]);
-                instance.lippu(x, y);
-                assertEquals(-1, instance.kartta()[x][y]);
-                instance.avaaruutu(x, y);
-                assertEquals(true, (instance.kartta()[x][y] > -3) && instance.kartta()[x][y] != -1);
+        System.out.println("avaaruutuMiina");
+        int x = 0;
+        int y = 0;
+        Kartanluonti k = new Kartanluonti(10, 10, 100);
+        RuudukkoAvatutuSuljetut instance = new RuudukkoAvatutuSuljetut(10, 10, k);
+        assertEquals(false, instance.isOnkomiinatavattu());
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                assertEquals(true, instance.kartta()[i][j].isOnkoMiinaa());
+                assertEquals(false, instance.kartta()[i][j].isOnkoAuki());
             }
         }
-
+        instance.avaaruutu(0, 0);
+        assertEquals(true, instance.isOnkomiinatavattu());
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                assertEquals(true, instance.kartta()[i][j].isOnkoMiinaa());
+                assertEquals(true, instance.kartta()[i][j].isOnkoAuki());
+            }
+        }
     }
 
+    /**
+     * Test of kartta method, of class RuudukkoAvatutuSuljetut.
+     */
+    @Test
+    public void testKartta() {
+        System.out.println("Tyhjaalue");
+        Kartanluonti k = new Kartanluonti(10, 10, 0);
+        RuudukkoAvatutuSuljetut instance = new RuudukkoAvatutuSuljetut(10, 10, k);
+        instance.avaaruutu(0, 0);
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                assertEquals(true, instance.kartta()[i][j].isOnkoAuki());
+            }
+        }
+    }
+
+    /**
+     * Test of isOnkomiinatavattu method, of class RuudukkoAvatutuSuljetut.
+     */
+    @Test
+    public void testIsOnkomiinatavattu() {
+        System.out.println("Oikeat numerot");
+        Kartanluonti k = new Kartanluonti(10, 10, 50);
+        RuudukkoAvatutuSuljetut instance = new RuudukkoAvatutuSuljetut(10, 10, k);
+        int summ = 0;
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (!instance.kartta()[i][j].isOnkoMiinaa()) {
+                    instance.avaaruutu(i, j);
+                } else {
+                    summ++;
+                }
+            }
+        }
+        assertEquals(50, summ);
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                assertEquals(true, (-1 < instance.kartta()[i][j].getMiinojenLukumaaraYmparilla() && instance.kartta()[i][j].getMiinojenLukumaaraYmparilla() < 9));
+            }
+        }
+    }
+    
 }
