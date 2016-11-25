@@ -14,3 +14,6 @@ testaukseen.
 ##kolmas viikko
 Grafiikka on lähestulkoon valmis, mietin vain että onko hyvän kun linkkasin jButton luokkaan käyttöliitymän ja käyttöliitymään Jbuttonit. Ilman että olisin linkannu jButtoneihin käyttöliitymän niin miten olisin voinut saada jokaisen napin painalluksen kohdalla päivittymään grafiikan, varsinkin kun on kaksi operaatiota jotka muutavat muitakin ruutuja kuin itseään. Ensiviikolla tarttee saada kartan koon muutaminen fiksuksi ja mahdollinen aloitavava graafinen käyttö liitymä.
 Logiikassa sain tälläviikolla liput valmiiksi. Edelleen tyhjän aleen avaaminen on ongelma. testejä sain hyvin eteenpäin, rivikaatavuuden 80% ja mutaatiot testauksen 50%. Homma rupeaa olemaan aika valmis tai muutamaa asiaa pitää vielä hioa.
+
+## Neljäsviikko
+Grafiikka ja käyttöliitymä toimii, korjasin koodista helpompi lukuista. Vielä tarttee kattoo pelin lopetus, mut aikalailla valmista. Tietenkin muutamaa lisäominaisuus tulee mieleen tarttee kattoo jos vaik tekis ne. Pitin rivi kattavuus joku n.90 pinnaa ja mutaatio kattavuus 80 pinnaa et testaamisessakaan ei ongelmia.
