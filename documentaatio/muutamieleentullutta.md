@@ -17,3 +17,6 @@ Logiikassa sain tälläviikolla liput valmiiksi. Edelleen tyhjän aleen avaamine
 
 ## Neljäsviikko
 Grafiikka ja käyttöliitymä toimii, korjasin koodista helpompi lukuista. Vielä tarttee kattoo pelin lopetus, mut aikalailla valmista. Tietenkin muutamaa lisäominaisuus tulee mieleen tarttee kattoo jos vaik tekis ne. Pitin rivi kattavuus joku n.90 pinnaa ja mutaatio kattavuus 80 pinnaa et testaamisessakaan ei ongelmia.
+
+## Viidesviikko 
+parantelin koodia, en kerennyt tänään katsoa laajennuksia tulen katsomaan niitä viikonlopunaikana ennen ensviikon pajaa. en saanut tänään muuta eteenpäin kuin selvenssin koodia helpompi lukuisammaksi
