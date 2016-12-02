@@ -5,6 +5,7 @@
  */
 package logiikka;
 
+import static logiikka.Kartanluonti.Kartanluonti;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -43,11 +44,11 @@ public class KartanluontiTest {
     @Test
     public void testGetKartta() {
         System.out.println("getKartta");
-        Kartanluonti instance = new Kartanluonti(10, 10, 50);
+        Ruutu[][] instance = Kartanluonti(10, 10, 50);
         int s = 0;
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                if (instance.getKartta()[i][j].isOnkoMiinaa()) {
+                if (instance[i][j].isOnkoMiinaa()) {
                     s++;
                 }
 
@@ -60,18 +61,18 @@ public class KartanluontiTest {
         System.out.println("getKartta2");
         int korkeus = 10;
         int leveys = 10;
-        Kartanluonti instance = new Kartanluonti(korkeus, leveys, 50);
+        Ruutu[][] instance = Kartanluonti(korkeus, leveys, 50);
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                if (instance.getKartta()[i][j].isOnkoMiinaa()) {
+                if (instance[i][j].isOnkoMiinaa()) {
                     for (int k = -1; k < 2; k++) {
                         int rajax = i + k;
                         if (rajax >= 0 && rajax < korkeus) {
                             for (int l = -1; l < 2; l++) {
                                 int rajay = j + l;
                                 if (rajay >= 0 && rajay < leveys) {
-                                    if (!instance.getKartta()[rajax][rajay].isOnkoMiinaa()) {
-                                        assertEquals(true, instance.getKartta()[i][j].getMiinojenLukumaaraYmparilla() > 0);
+                                    if (!instance[rajax][rajay].isOnkoMiinaa()) {
+                                        assertEquals(true, instance[i][j].getMiinojenLukumaaraYmparilla() > 0);
                                     }
                                     
                                 }

@@ -3,14 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logiikka;
+package miinaharava.miinaharava2tiera;
 
 import grafiikka.Kayttoliityma;
 import java.util.Scanner;
 import javax.swing.SwingUtilities;
+import logiikka.Ruutu;
+import logiikka.Logiikankayttoliityma;
+import static logiikka.Kartanluonti.Kartanluonti;
 
 /**
- *
+ *  MainClass joka ajaa perus ohjelman
+ * 
  * @author tiera
  */
 public class NewMain {
@@ -26,28 +30,11 @@ public class NewMain {
         int leveys = Integer.parseInt(lukija.nextLine());
         System.out.println("Miinojen maara ");
         int m = Integer.parseInt(lukija.nextLine());
-        Kartanluonti d = new Kartanluonti(korkeus, leveys, m);
-        RuudukkoAvatutuSuljetut z = new RuudukkoAvatutuSuljetut(korkeus, leveys, d);
+        Ruutu[][] d = Kartanluonti(korkeus, leveys, m);
+        Logiikankayttoliityma z = new Logiikankayttoliityma(korkeus, leveys, d);
 
         Kayttoliityma kayttoliittyma = new Kayttoliityma(z, korkeus, leveys);
         SwingUtilities.invokeLater(kayttoliittyma);
-
-        /*
-        Scanner lukija = new Scanner(System.in);
-        RuudukkoAvatutuSuljetut j = new RuudukkoAvatutuSuljetut(10, 5, 0);
-        System.out.println(j.toString());
-        
-        while (true){
-            System.out.println("Rajat 1-10");
-            System.out.println("Anna x ");
-            int x = Integer.parseInt(lukija.nextLine()) -1;
-            System.out.println("Anna y ");
-            int y = Integer.parseInt(lukija.nextLine()) -1;
-            j.avaaruutu(x, y);
-            System.out.println(j);
-            
-        }
-         */
     }
 
 }

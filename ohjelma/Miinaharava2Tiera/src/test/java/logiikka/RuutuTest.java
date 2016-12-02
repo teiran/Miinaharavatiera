@@ -67,7 +67,7 @@ public class RuutuTest {
     public void testAvaa() {
         System.out.println("avaa");
         Ruutu instance = new Ruutu();
-        instance.avaa();
+        instance.avaaRuutu();
         assertEquals(instance.isOnkoAuki(), true);
     }
     
@@ -75,13 +75,13 @@ public class RuutuTest {
     public void testLippu(){
         System.out.println("lippu");
         Ruutu instance = new Ruutu();
-        instance.asetalippu();
+        instance.asetaTaiPoistaLippu();
         assertEquals(instance.onkolippua(), true);
-        instance.avaa();
+        instance.avaaRuutu();
         assertEquals(instance.isOnkoAuki(), false);
-        instance.asetalippu();
+        instance.asetaTaiPoistaLippu();
         assertEquals(instance.onkolippua(), false);
-        instance.avaa();
+        instance.avaaRuutu();
         assertEquals(instance.isOnkoAuki(), true);
     }
     
@@ -90,20 +90,20 @@ public class RuutuTest {
         System.out.println("toString");
         Ruutu k = new Ruutu();
         assertEquals(k.toString(), " ");
-        k.asetalippu();
+        k.asetaTaiPoistaLippu();
         assertEquals(k.toString(), "L");
         k.laskemiinat(3);
-        k.asetalippu();
+        k.asetaTaiPoistaLippu();
         assertEquals(k.toString(), " ");
-        k.avaa();
+        k.avaaRuutu();
         assertEquals(Integer.parseInt(k.toString()), 3);
         k = new Ruutu();
         k.laskemiinat(0);
-        k.avaa();
+        k.avaaRuutu();
         assertEquals(k.toString(), " ");
         k = new Ruutu();
         k.asetamiina();
-        k.avaa();
+        k.avaaRuutu();
         assertEquals(k.toString(), "M");
         
         

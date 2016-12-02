@@ -6,7 +6,11 @@
 package logiikka;
 
 /**
- *
+ * logiikan käyttämä ruutu luokka joka pitää kiraa onko jossain ruudussa
+ * miinaa, lippua vai onko se tyhjä, jos se on tyhjä se pitää myös kirajaa siitä 
+ * kuinka monta miinaa sen vieressä on alussa, Kaikki ruudun arvot päiviteään 
+ * karttaa luodessa, Lisäksi ruutu pitää kirjaa siitä onko se jo avattu.
+ * 
  * @author tiera
  */
 public class Ruutu {
@@ -26,7 +30,7 @@ public class Ruutu {
      * Asettaa Lipun ruutuun jos sitä ei ole sillä tai ottaa sen pois jos se on sillä
      * Tarkistaa on ruutu auki, eli pystyykö laittamaan lippua
      */
-    public void asetalippu() {
+    public void asetaTaiPoistaLippu() {
         if (onkoAuki) {
             return;
         }
@@ -62,7 +66,7 @@ public class Ruutu {
     /**
      * avaa ruudun jos ruudussa ei ole lippua
      */
-    public void avaa() {
+    public void avaaRuutu() {
         if (!lippu) {
             onkoAuki = true;
         } else if (onkoMiinaa) {

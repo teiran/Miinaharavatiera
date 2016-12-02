@@ -5,67 +5,66 @@
  */
 package grafiikka;
 
+import java.awt.event.MouseListener;
 import javax.swing.JButton;
 
 /**
- *
+ * Ruudun kuva ja kuuntelija.
  * @author tiera
  */
-public class RuutuButton extends JButton {
+public class RuutuButton extends JButton implements MouseListener {
+    
     private String arvo;
     private final Kayttoliityma k;
     private final int x;
     private final int y;
-    /**
-     * 
-     * @param arvo graafisen ruudun ulos päin näyttämä arvo
-     * @param k1 linkki käyttöliitymään
-     * @param x ruudun x-koordinaati kentällä
-     * @param y ruudun y-koordinaati kentällä
-     */
-    public RuutuButton(String arvo, Kayttoliityma k1, int x, int y) {
+
+    public RuutuButton(String arvo, Kayttoliityma k, int x, int y) {
+        this.arvo = arvo;
+        this.k = k;
         this.x = x;
         this.y = y;
-        this.arvo = arvo;
-        muutatextia();
-        k = k1;
+        this.addMouseListener(this);
+        muutaTextia();
     }
     
-    private void muutatextia(){
+
+    @Override
+    public void mouseClicked(java.awt.event.MouseEvent e) {
+        if (e.getButton() == 1) {
+            k.paivitaAvaus(x, y);
+        } else if (e.getButton() == 3) {
+            k.paivitaLippu(x, y);
+        }
+        
+    }
+    
+    public void setArvo(String g){
+        arvo = g;
+        muutaTextia();
+    }
+    
+    private void muutaTextia(){
         this.setText(arvo);
     }
-    /**
-     * 
-     * @param arvo muuttaa ulospäin näkyvää arvoa 
-     */
-    public void setArvo(String arvo) {
-        this.arvo = arvo;
-        muutatextia();
-    }
-    /**
-     * 
-     * @param painettu hiirtä päinettua kutsuu peliloopia
-     */
-    public void setPainettu(int painettu) {
-        k.peli(this, painettu);
-    }
-    /**
-     * 
-     * @return palauttaa x-koordinaatin 
-     */
-    public int x(){
-        return x;
-    }
-    /**
-     * 
-     * @return palauttaa y-koordinaatin 
-     */
-    public int y(){
-        return y;
-    }
-    
 
-    
+    @Override
+    public void mousePressed(java.awt.event.MouseEvent e) {
+        
+    }
 
+    @Override
+    public void mouseReleased(java.awt.event.MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseEntered(java.awt.event.MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(java.awt.event.MouseEvent e) {
+        
+    }
     
 }

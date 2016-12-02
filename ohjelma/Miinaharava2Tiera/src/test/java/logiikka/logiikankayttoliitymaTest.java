@@ -11,14 +11,16 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static logiikka.Kartanluonti.Kartanluonti;
+import static logiikka.Kartanluonti.Kartanluonti;
 
 /**
  *
  * @author tiera
  */
-public class RuudukkoAvatutuSuljetutTest {
+public class logiikankayttoliitymaTest {
     
-    public RuudukkoAvatutuSuljetutTest() {
+    public logiikankayttoliitymaTest() {
     }
     
     @BeforeClass
@@ -45,8 +47,8 @@ public class RuudukkoAvatutuSuljetutTest {
         System.out.println("avaaruutu1lippu");
         int x = 0;
         int y = 0;
-        Kartanluonti k = new Kartanluonti(10, 10, 0);
-        RuudukkoAvatutuSuljetut instance = new RuudukkoAvatutuSuljetut(10, 10, k);
+        Ruutu[][] k = Kartanluonti(10, 10, 0);
+        Logiikankayttoliityma instance = new Logiikankayttoliityma(10, 10, k);
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 instance.lippu(i, j);
@@ -85,8 +87,8 @@ public class RuudukkoAvatutuSuljetutTest {
         System.out.println("avaaruutuMiina");
         int x = 0;
         int y = 0;
-        Kartanluonti k = new Kartanluonti(10, 10, 100);
-        RuudukkoAvatutuSuljetut instance = new RuudukkoAvatutuSuljetut(10, 10, k);
+        Ruutu[][] k = Kartanluonti(10, 10, 100);
+        Logiikankayttoliityma instance = new Logiikankayttoliityma(10, 10, k);
         assertEquals(false, instance.isOnkomiinatavattu());
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -110,8 +112,8 @@ public class RuudukkoAvatutuSuljetutTest {
     @Test
     public void testKartta() {
         System.out.println("Tyhjaalue");
-        Kartanluonti k = new Kartanluonti(10, 10, 0);
-        RuudukkoAvatutuSuljetut instance = new RuudukkoAvatutuSuljetut(10, 10, k);
+        Ruutu[][] k = Kartanluonti(10, 10, 0);
+        Logiikankayttoliityma instance = new Logiikankayttoliityma(10, 10, k);
         instance.avaaruutu(0, 0);
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -126,8 +128,8 @@ public class RuudukkoAvatutuSuljetutTest {
     @Test
     public void testIsOnkomiinatavattu() {
         System.out.println("Oikeat numerot");
-        Kartanluonti k = new Kartanluonti(10, 10, 50);
-        RuudukkoAvatutuSuljetut instance = new RuudukkoAvatutuSuljetut(10, 10, k);
+        Ruutu[][] k = Kartanluonti(10, 10, 50);
+        Logiikankayttoliityma instance = new Logiikankayttoliityma(10, 10, k);
         int summ = 0;
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {

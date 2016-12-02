@@ -8,40 +8,42 @@ package logiikka;
 import logiikka.Ruutu;
 
 /**
+ * Luo Ruutu[][] kartan jossa on kaikki miinat ja luvut siitä kuinka monta miinaa on 
+ * naapurissa
  *
  * @author tiera
  */
 public class Kartanluonti {
 
-    private int korkeus;
-    private int leveys;
-    private int miinojenMaara;
-    private Ruutu[][] kartta;
+    private static int korkeus;
+    private static int leveys;
+    private static int miinojenMaara;
+    private static Ruutu[][] kartta;
     /**
      * 
      * @param korkeus kentän korkeus
      * @param leveys kentän leveys
      * @param miinojenMaara Miinojen määrä
+     * @return 
      */
-    public Kartanluonti(int korkeus, int leveys, int miinojenMaara) {
-        this.korkeus = korkeus;
-        this.leveys = leveys;
-        this.miinojenMaara = miinojenMaara;
+    public static Ruutu[][] Kartanluonti(int korkeus, int leveys, int miinojenMaara) {
+        Kartanluonti.korkeus = korkeus;
+        Kartanluonti.leveys = leveys;
+        Kartanluonti.miinojenMaara = miinojenMaara;
         kartta = new Ruutu[korkeus][leveys];
         luokartta();
         arvomiinat();
         laskemiinat();
-
-    }
-    /**
-     * 
-     * @return palauttaa valmiiksi alustetun  kentän
-     */
-    public Ruutu[][] getKartta() {
         return kartta;
-    }
 
-    private void luokartta() {
+    }
+    
+    public static int miinojenmaara(){
+        return miinojenMaara;
+    }
+    
+
+    private static void luokartta() {
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
                 kartta[i][j] = new Ruutu();
@@ -49,7 +51,7 @@ public class Kartanluonti {
         }
     }
 
-    private void arvomiinat() {
+    private static void arvomiinat() {
         int x = (int) (korkeus * Math.random());
         int y = (int) (leveys * Math.random());
         boolean t = (0 != miinojenMaara);
@@ -64,7 +66,7 @@ public class Kartanluonti {
         }
     }
 
-    private void laskemiinat() {
+    private static void laskemiinat() {
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
                 if (!kartta[i][j].isOnkoMiinaa()) {
@@ -74,7 +76,7 @@ public class Kartanluonti {
         }
     }
 
-    private void laskemiinat(int x, int y) {
+    private static void laskemiinat(int x, int y) {
         int summa = 0;
         for (int rajax = Math.max(x - 1, 0); rajax < Math.min(x + 2, korkeus); rajax++) {
             for (int rajay = Math.max(y - 1, 0); rajay < Math.min(y + 2, leveys); rajay++) {

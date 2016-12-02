@@ -8,30 +8,31 @@ package grafiikka;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
-import logiikka.Kartanluonti;
-import logiikka.RuudukkoAvatutuSuljetut;
+import static logiikka.Kartanluonti.Kartanluonti;
+import static logiikka.Kartanluonti.miinojenmaara;
+import logiikka.Ruutu;
+import logiikka.Logiikankayttoliityma;
 
 /**
- *
+ * pyörittää graafista käyttöliitymää ja yhdistää tämän logiikkaan.
  * @author tiera
  */
 public class Kayttoliityma implements Runnable {
 
     private JFrame frame;
-    private RuudukkoAvatutuSuljetut logiikka;
+    private Logiikankayttoliityma logiikka;
     private RuutuButton[][] ruudut;
-    private int korkeus;
-    private int leveys;
+    private final int korkeus;
+    private final int leveys;
     /**
      * 
      * @param k logiikkan käyttöliitymä
      * @param korkeus kentän korkeus
      * @param leveys  kentän leveys
      */
-    public Kayttoliityma(RuudukkoAvatutuSuljetut k, int korkeus, int leveys) {
+    public Kayttoliityma(Logiikankayttoliityma k, int korkeus, int leveys) {
         this.korkeus = korkeus;
         this.leveys = leveys;
         logiikka = k;
@@ -59,38 +60,48 @@ public class Kayttoliityma implements Runnable {
      * @param ruutu graafinenruutu mitä ollan painettu
      * @param f kummalla hiiren näppäimellä ollaan painettu
      */
-    public void peli(RuutuButton ruutu, int f) {
+    public void paivitaAvaus(int x, int y) {
         if (logiikka.isOnkomiinatavattu()) {
             return;
         }
-        int x = ruutu.x();
-        int y = ruutu.y();
-        if (ruudut[x][y] == ruutu) {
-            if (f == 1) {
-                logiikka.avaaruutu(x, y);
-            } else if (f == 2) {
-                logiikka.lippu(x, y);
-            }
+        logiikka.avaaruutu(x, y);
+        paivitaruudut();
+    }
+    
+    public void paivitaLippu(int x, int y){
+        if (logiikka.isOnkomiinatavattu()) {
+            return;
         }
-
+        logiikka.lippu(x, y);
+        paivitaruudut();
+    }
+    
+    private void paivitaruudut(){
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
                 ruudut[i][j].setArvo(logiikka.kartta()[i][j].toString());
             }
         }
     }
+    
+    public void aloitauusipeli(){
+        int y = miinojenmaara();
+        Ruutu[][] f = Kartanluonti(korkeus, leveys, y);
+        logiikka = new Logiikankayttoliityma(korkeus, leveys, f);
+        paivitaruudut();
+        
+    }
 
     private void luokomponetti(Container container) {
-        frame.setLayout(new GridLayout(korkeus, leveys));
+        frame.setLayout(new GridLayout(korkeus+1, leveys));
         ruudut = new RuutuButton[korkeus][leveys];
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
                 ruudut[i][j] = new RuutuButton(logiikka.kartta()[i][j].toString(), this, i, j);
-                Ruudunkuuntelija k = new Ruudunkuuntelija(ruudut[i][j]);
-                ruudut[i][j].addMouseListener(k);
                 container.add(ruudut[i][j]);
             }
         }
+        container.add(new Uusintanappula(this));
     }
 
 }
