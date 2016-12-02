@@ -5,3 +5,4 @@
 [Tuntikirjanpito](https://github.com/teiran/Miinaharavatiera/blob/master/documentaatio/tuntikirjanpito.md)
 [Muutamieleentullutta](https://github.com/teiran/Miinaharavatiera/blob/master/documentaatio/muutamieleentullutta.md)
 [Sekvessikaavio1](https://github.com/teiran/Miinaharavatiera/blob/master/documentaatio/Sekvensikaavio1.jpg)
+[Sekvessikaavio2](https://github.com/teiran/Miinaharavatiera/blob/master/documentaatio/Sekvenssikaavio2.jpg)
