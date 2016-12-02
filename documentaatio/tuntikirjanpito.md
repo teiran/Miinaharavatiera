@@ -9,4 +9,5 @@ Päivä | Tunnit | Kuvaus
 18.11.2016 | 6h | testejen tekemistä ja grafiikan tekemistä ja pieniä korjauksia logiikkaan
 23.11.2016 | 1h | koodin parantelua
 25.11.2016 | 3h | koodin parantelua ja testien parantelua
+02.12.2016 | 2h | koodin parantelua ja sekvensikaaviot
 ... | ... | ...
