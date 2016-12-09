@@ -13,7 +13,7 @@ import javax.swing.WindowConstants;
 import static logiikka.Kartanluonti.Kartanluonti;
 import static logiikka.Kartanluonti.miinojenmaara;
 import logiikka.Ruutu;
-import logiikka.Logiikankayttoliityma;
+import logiikka.PelinLogiikka;
 
 /**
  * pyörittää graafista käyttöliitymää ja yhdistää tämän logiikkaan.
@@ -22,20 +22,22 @@ import logiikka.Logiikankayttoliityma;
 public class Kayttoliityma implements Runnable {
 
     private JFrame frame;
-    private Logiikankayttoliityma logiikka;
+    private PelinLogiikka logiikka;
     private RuutuButton[][] ruudut;
-    private final int korkeus;
-    private final int leveys;
+    private int korkeus;
+    private int leveys;
+    private int miinojenmaara;
     /**
      * 
      * @param k logiikkan käyttöliitymä
      * @param korkeus kentän korkeus
      * @param leveys  kentän leveys
      */
-    public Kayttoliityma(Logiikankayttoliityma k, int korkeus, int leveys) {
+    public Kayttoliityma(PelinLogiikka k, int korkeus, int leveys, int miinojenmaara) {
         this.korkeus = korkeus;
         this.leveys = leveys;
         logiikka = k;
+        this.miinojenmaara = miinojenmaara;
 
     }
     /**
@@ -57,8 +59,8 @@ public class Kayttoliityma implements Runnable {
     /**
      * Peli looppi
      * 
-     * @param ruutu graafinenruutu mitä ollan painettu
-     * @param f kummalla hiiren näppäimellä ollaan painettu
+     * @param x
+     * @param y
      */
     public void paivitaAvaus(int x, int y) {
         if (logiikka.isOnkomiinatavattu()) {
@@ -85,9 +87,9 @@ public class Kayttoliityma implements Runnable {
     }
     
     public void aloitauusipeli(){
-        int y = miinojenmaara();
+        int y = miinojenmaara;
         Ruutu[][] f = Kartanluonti(korkeus, leveys, y);
-        logiikka = new Logiikankayttoliityma(korkeus, leveys, f);
+        logiikka = new PelinLogiikka(korkeus, leveys, f);
         paivitaruudut();
         
     }

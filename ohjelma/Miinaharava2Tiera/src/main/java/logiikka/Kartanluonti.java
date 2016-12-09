@@ -86,7 +86,7 @@ public class Kartanluonti {
             }
 
         }
-        kartta[x][y].laskemiinat(summa);
+        kartta[x][y].annamiinojenmaara(summa);
     }
 
 }

@@ -9,7 +9,7 @@ import grafiikka.Kayttoliityma;
 import java.util.Scanner;
 import javax.swing.SwingUtilities;
 import logiikka.Ruutu;
-import logiikka.Logiikankayttoliityma;
+import logiikka.PelinLogiikka;
 import static logiikka.Kartanluonti.Kartanluonti;
 
 /**
@@ -31,9 +31,9 @@ public class NewMain {
         System.out.println("Miinojen maara ");
         int m = Integer.parseInt(lukija.nextLine());
         Ruutu[][] d = Kartanluonti(korkeus, leveys, m);
-        Logiikankayttoliityma z = new Logiikankayttoliityma(korkeus, leveys, d);
+        PelinLogiikka z = new PelinLogiikka(korkeus, leveys, d);
 
-        Kayttoliityma kayttoliittyma = new Kayttoliityma(z, korkeus, leveys);
+        Kayttoliityma kayttoliittyma = new Kayttoliityma(z, korkeus, leveys, m);
         SwingUtilities.invokeLater(kayttoliittyma);
     }
 

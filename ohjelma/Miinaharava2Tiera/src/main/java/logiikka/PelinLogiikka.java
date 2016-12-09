@@ -11,7 +11,7 @@ package logiikka;
  * 
  * @author tiera
  */
-public class Logiikankayttoliityma {
+public class PelinLogiikka {
 
     private Ruutu[][] kartta;
     private int leveys;
@@ -23,7 +23,7 @@ public class Logiikankayttoliityma {
      * @param leveys kentän leveys
      * @param z alustettu kenttä
      */
-    public Logiikankayttoliityma(int korkeus, int leveys, Ruutu[][] z) {
+    public PelinLogiikka(int korkeus, int leveys, Ruutu[][] z) {
         kartta = z;
         this.korkeus = korkeus;
         this.leveys = leveys;
@@ -43,8 +43,19 @@ public class Logiikankayttoliityma {
             onkomiinatavattu = true;
             avaamiinat();
         } else {
-            etosunutmiinaan(x, y);
+            avaatyhjaruututairuutujossaeiminaa(x, y);
         }
+    }
+    
+    public boolean onkoKaikkiRuudutAuki(){
+        for (Ruutu[] ruutus : kartta) {
+            for (Ruutu ruutu : ruutus) {
+                if (!ruutu.isOnkoAuki()) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     private void avaamiinat() {
@@ -61,7 +72,7 @@ public class Logiikankayttoliityma {
         kartta[x][y].asetaTaiPoistaLippu();
     }
 
-    private void etosunutmiinaan(int x, int y) { // alempi(rekursiivinen osa ei toimi vielä)
+    private void avaatyhjaruututairuutujossaeiminaa(int x, int y) { // alempi(rekursiivinen osa ei toimi vielä)
         kartta[x][y].avaaRuutu();
         if (kartta[x][y].getMiinojenLukumaaraYmparilla() == 0) {
             avaatyhjaalue(x, y);
@@ -74,7 +85,7 @@ public class Logiikankayttoliityma {
             for (int rajay = Math.max(y - 1, 0); rajay < Math.min(y + 2, korkeus); rajay++) {
                 if (kartta[rajax][rajay].getMiinojenLukumaaraYmparilla() == 0 && !kartta[rajax][rajay].isOnkoAuki() && !kartta[rajax][rajay].onkolippua()) {
                     kartta[rajax][rajay].avaaRuutu();
-                    etosunutmiinaan(rajax, rajay);
+                    avaatyhjaruututairuutujossaeiminaa(rajax, rajay);
                 } else {
                     kartta[rajax][rajay].avaaRuutu();
                 }

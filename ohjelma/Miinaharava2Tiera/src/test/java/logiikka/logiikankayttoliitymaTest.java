@@ -48,7 +48,7 @@ public class logiikankayttoliitymaTest {
         int x = 0;
         int y = 0;
         Ruutu[][] k = Kartanluonti(10, 10, 0);
-        Logiikankayttoliityma instance = new Logiikankayttoliityma(10, 10, k);
+        PelinLogiikka instance = new PelinLogiikka(10, 10, k);
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 instance.lippu(i, j);
@@ -88,7 +88,7 @@ public class logiikankayttoliitymaTest {
         int x = 0;
         int y = 0;
         Ruutu[][] k = Kartanluonti(10, 10, 100);
-        Logiikankayttoliityma instance = new Logiikankayttoliityma(10, 10, k);
+        PelinLogiikka instance = new PelinLogiikka(10, 10, k);
         assertEquals(false, instance.isOnkomiinatavattu());
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -113,7 +113,7 @@ public class logiikankayttoliitymaTest {
     public void testKartta() {
         System.out.println("Tyhjaalue");
         Ruutu[][] k = Kartanluonti(10, 10, 0);
-        Logiikankayttoliityma instance = new Logiikankayttoliityma(10, 10, k);
+        PelinLogiikka instance = new PelinLogiikka(10, 10, k);
         instance.avaaruutu(0, 0);
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -129,7 +129,7 @@ public class logiikankayttoliitymaTest {
     public void testIsOnkomiinatavattu() {
         System.out.println("Oikeat numerot");
         Ruutu[][] k = Kartanluonti(10, 10, 50);
-        Logiikankayttoliityma instance = new Logiikankayttoliityma(10, 10, k);
+        PelinLogiikka instance = new PelinLogiikka(10, 10, k);
         int summ = 0;
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {

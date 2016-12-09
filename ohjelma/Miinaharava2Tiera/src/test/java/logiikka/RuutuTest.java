@@ -56,7 +56,7 @@ public class RuutuTest {
         System.out.println("laskemiinat");
         int miinat = 6;
         Ruutu instance = new Ruutu();
-        instance.laskemiinat(miinat);
+        instance.annamiinojenmaara(miinat);
         assertEquals(6, instance.getMiinojenLukumaaraYmparilla());
     }
 
@@ -92,13 +92,13 @@ public class RuutuTest {
         assertEquals(k.toString(), " ");
         k.asetaTaiPoistaLippu();
         assertEquals(k.toString(), "L");
-        k.laskemiinat(3);
+        k.annamiinojenmaara(3);
         k.asetaTaiPoistaLippu();
         assertEquals(k.toString(), " ");
         k.avaaRuutu();
         assertEquals(Integer.parseInt(k.toString()), 3);
         k = new Ruutu();
-        k.laskemiinat(0);
+        k.annamiinojenmaara(0);
         k.avaaRuutu();
         assertEquals(k.toString(), " ");
         k = new Ruutu();

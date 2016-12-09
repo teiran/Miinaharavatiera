@@ -60,7 +60,7 @@ public class Ruutu {
      * 
      * @param miinat syöttää miinojen määrän ruutuun (kenttää alustaessa) 
      */
-    public void laskemiinat(int miinat) {
+    public void annamiinojenmaara(int miinat) {
         miinojenLukumaaraYmparilla = miinat;
     }
     /**

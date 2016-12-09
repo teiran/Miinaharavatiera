@@ -26,7 +26,7 @@ under the License.
     <copyright>&#169;2016</copyright>
     <item>
       <title>File: 7,
-             Errors: 10,
+             Errors: 11,
              Warnings: 0,
              Infos: 0
       </title>
@@ -88,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#miinaharava.miinaharava2tiera.NewMain.java">miinaharava/miinaharava2tiera/NewMain.java</a>
+                  <a href="${project.url}/checkstyle.html#logiikka.PelinLogiikka.java">logiikka/PelinLogiikka.java</a>
                 </td>
                 <td>
                   0
@@ -97,12 +97,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  1
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#logiikka.Logiikankayttoliityma.java">logiikka/Logiikankayttoliityma.java</a>
+                  <a href="${project.url}/checkstyle.html#miinaharava.miinaharava2tiera.NewMain.java">miinaharava/miinaharava2tiera/NewMain.java</a>
                 </td>
                 <td>
                   0
