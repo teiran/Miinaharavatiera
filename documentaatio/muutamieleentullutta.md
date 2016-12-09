@@ -20,3 +20,6 @@ Grafiikka ja käyttöliitymä toimii, korjasin koodista helpompi lukuista. Viel�
 
 ## Viidesviikko 
 parantelin koodia, en kerennyt tänään katsoa laajennuksia tulen katsomaan niitä viikonlopunaikana ennen ensviikon pajaa. en saanut tänään muuta eteenpäin kuin selvenssin koodia helpompi lukuisammaksi
+
+## Kuudesviikko
+Sain uudenpelin aloittamisen korjattuu. Vieläkin käyttöliitymää tarvitsisi vähän hioa. Lisäksi en saanut mainclass polkua löydettä oikein joten se ei vielä toimi....
