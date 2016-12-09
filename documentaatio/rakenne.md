@@ -5,3 +5,4 @@ ja pelilogiikasta. Kartan luonti on staatinen ja sen tehtävänä on luoda kartt
 päivittää ruutuihin pelaajan tekemiä valintoja ja kertoo käyttöliitymälle ja tämän grafiikalle mitä näyttää missäkin. Käyttöliitymä
 pitää vain yhteyttä pelilogiikkaan ja päivittää grafiikka. Uutta peliä luotassa käyttö liitymä vain luo uuden pelilogiikan ja 
 kartan ja jatkaa näillä pelaamista.
+[oliokaavio](https://github.com/teiran/Miinaharavatiera/blob/master/documentaatio/Oliokaavio.jpg)
