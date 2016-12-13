@@ -51,7 +51,7 @@ public class Kayttoliityma implements Runnable {
     @Override
     public void run() {
         frame = new JFrame("Miinaharava");
-        frame.setPreferredSize(new Dimension(400, 100));
+        frame.setPreferredSize(new Dimension(400, 120));
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         aloitapeli(frame.getContentPane());
@@ -140,15 +140,15 @@ public class Kayttoliityma implements Runnable {
 
     private JPanel luovalikko() {
         JPanel panel = new JPanel(new GridLayout(1, 2));
-        JTextArea k3 = new JTextArea();
+        JTextArea k3 = new JTextArea("Miinojenmaara \n jos tyhjä \n ekalla kerralla \n menee rikki, \n vain numeroita");
         panel.add(k3);
         miinojenlukija = k3;
         Uusintanappula u = new Uusintanappula(this);
         panel.add(u);
-        JTextArea k1 = new JTextArea();
+        JTextArea k1 = new JTextArea("leveys \n jos tyhjä \n ekalla kerralla \n menee  rikki, \n vain numeroita");
         panel.add(k1);
         korkeudenlukija = k1;
-        JTextArea k2 = new JTextArea();
+        JTextArea k2 = new JTextArea("leveys \n jos tyhjä \n ekalla kerralla \n menee rikki, \n vain numeroita");
         panel.add(k2);
         leveydenlukija = k2;
         
