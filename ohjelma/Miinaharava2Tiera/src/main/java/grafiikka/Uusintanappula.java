@@ -28,7 +28,7 @@ public class Uusintanappula extends JButton implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        ka.aloitauusipeli();
+        ka.paivitagrafiikkaa();
     }
 
     @Override

@@ -38,10 +38,6 @@ public class Kartanluonti {
 
     }
     
-    public static int miinojenmaara(){
-        return miinojenMaara;
-    }
-    
 
     private static void luokartta() {
         for (int i = 0; i < korkeus; i++) {

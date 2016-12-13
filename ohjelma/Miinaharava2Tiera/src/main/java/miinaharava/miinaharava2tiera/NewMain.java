@@ -23,17 +23,7 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Scanner lukija = new Scanner(System.in);
-        System.out.println("Ruudukon leveys ");
-        int korkeus = Integer.parseInt(lukija.nextLine());
-        System.out.println("Ruudukon korkeus ");
-        int leveys = Integer.parseInt(lukija.nextLine());
-        System.out.println("Miinojen maara ");
-        int m = Integer.parseInt(lukija.nextLine());
-        Ruutu[][] d = Kartanluonti(korkeus, leveys, m);
-        PelinLogiikka z = new PelinLogiikka(korkeus, leveys, d);
-
-        Kayttoliityma kayttoliittyma = new Kayttoliityma(z, korkeus, leveys, m);
+        Kayttoliityma kayttoliittyma = new Kayttoliityma();
         SwingUtilities.invokeLater(kayttoliittyma);
     }
 
