@@ -33,12 +33,8 @@ public class Kayttoliityma implements Runnable {
     private JTextArea leveydenlukija;
     private JTextArea miinojenlukija;
 
-    /**
-     *
-     * @param k logiikkan käyttöliitymä
-     * @param korkeus kentän korkeus
-     * @param leveys kentän leveys
-     */
+    
+    
     public Kayttoliityma() {
         korkeus = 0;
         leveys = 0;
