@@ -5,12 +5,9 @@
  */
 package grafiikka;
 
-import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import javafx.scene.layout.Border;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -43,6 +40,9 @@ public class Kayttoliityma implements Runnable {
      * @param leveys kentän leveys
      */
     public Kayttoliityma() {
+        korkeus = 0;
+        leveys = 0;
+        miinojenmaara = 0;
     }
 
     /**
@@ -50,6 +50,43 @@ public class Kayttoliityma implements Runnable {
      */
     @Override
     public void run() {
+        pelijossaeioleruudukko();
+    }
+
+    public void paivitagrafiikkaa() {
+        muutaMiinojenmaraakorkeuttaleveytta();
+        frame.setVisible(false);
+        frame.removeAll();
+        if (korkeus > 0 && leveys > 0 && korkeus * leveys >= miinojenmaara) {
+            pelijossaonruudukko();
+        } else {
+            pelijossaeioleruudukko();
+        }
+
+    }
+
+    private void muutaMiinojenmaraakorkeuttaleveytta() {
+        String g = "Miinojenmaara \n jos tyhjä \n ekalla kerralla \n menee rikki, \n vain numeroita";
+        if (miinojenlukija.getText().equals(g)) {
+
+        } else if (!miinojenlukija.getText().isEmpty()) {
+            miinojenmaara = Integer.parseInt(miinojenlukija.getText());
+        }
+        String g2 = "leveys \n jos tyhjä \n ekalla kerralla \n menee rikki, \n vain numeroita";
+        if (leveydenlukija.getText().equals(g2)) {
+
+        } else if (!leveydenlukija.getText().isEmpty()) {
+            leveys = Integer.parseInt(leveydenlukija.getText());
+        }
+        String g3 = "korkeuden \n jos tyhjä \n ekalla kerralla \n menee  rikki, \n vain numeroita";
+        if (korkeudenlukija.getText().equals(g3)) {
+
+        } else if (!korkeudenlukija.getText().isEmpty()) {
+            korkeus = Integer.parseInt(korkeudenlukija.getText());
+        }
+    }
+
+    private void pelijossaeioleruudukko() {
         frame = new JFrame("Miinaharava");
         frame.setPreferredSize(new Dimension(400, 120));
 
@@ -57,68 +94,26 @@ public class Kayttoliityma implements Runnable {
         aloitapeli(frame.getContentPane());
         frame.pack();
         frame.setVisible(true);
-
-    }
-    
-    private void aloitapeli(Container container){
-        container.setLayout(new GridLayout(1, 4));
-        container.add(luovalikko());
     }
 
-    /**
-     * Peli looppi
-     *
-     * @param x
-     * @param y
-     */
-    public void paivitaAvaus(int x, int y) {
-        if (logiikka.isOnkomiinatavattu()) {
-            return;
-        }
-        logiikka.avaaruutu(x, y);
-        paivitaruudut();
-    }
-
-    public void paivitaLippu(int x, int y) {
-        if (logiikka.isOnkomiinatavattu()) {
-            return;
-        }
-        logiikka.lippu(x, y);
-        paivitaruudut();
-    }
-
-    private void paivitaruudut() {
-        for (int i = 0; i < korkeus; i++) {
-            for (int j = 0; j < leveys; j++) {
-                ruudut[i][j].setArvo(logiikka.kartta()[i][j].toString());
-            }
-        }
-    }
-    
-    public void paivitagrafiikkaa(){
-        if (!miinojenlukija.getText().isEmpty()) {
-            miinojenmaara = Integer.parseInt(miinojenlukija.getText());
-        }
-        if (!leveydenlukija.getText().isEmpty()) {
-            leveys = Integer.parseInt(leveydenlukija.getText());
-        } 
-        if (!korkeudenlukija.getText().isEmpty()) {
-            korkeus = Integer.parseInt(korkeudenlukija.getText());
-        }
-        frame.setVisible(false);
-        frame.removeAll();
+    private void pelijossaonruudukko() {
         frame = new JFrame("Miinaharava");
         frame.setPreferredSize(new Dimension(100 * leveys + 100, 100 * korkeus));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         int y = miinojenmaara;
         Ruutu[][] f = Kartanluonti(korkeus, leveys, y);
         logiikka = new PelinLogiikka(korkeus, leveys, f);
-        
+
         luokomponetti(frame.getContentPane());
         frame.pack();
         frame.setVisible(true);
     }
-    
+
+    private void aloitapeli(Container container) {
+        container.setLayout(new GridLayout(1, 4));
+        container.add(luovalikko());
+    }
+
     private void luokomponetti(Container container) {
         container.setLayout(new GridLayout(korkeus + 1, 1));
         container.add(luovalikko());
@@ -145,14 +140,38 @@ public class Kayttoliityma implements Runnable {
         miinojenlukija = k3;
         Uusintanappula u = new Uusintanappula(this);
         panel.add(u);
-        JTextArea k1 = new JTextArea("leveys \n jos tyhjä \n ekalla kerralla \n menee  rikki, \n vain numeroita");
+        JTextArea k1 = new JTextArea("korkeuden \n jos tyhjä \n ekalla kerralla \n menee  rikki, \n vain numeroita");
         panel.add(k1);
         korkeudenlukija = k1;
         JTextArea k2 = new JTextArea("leveys \n jos tyhjä \n ekalla kerralla \n menee rikki, \n vain numeroita");
         panel.add(k2);
         leveydenlukija = k2;
-        
+
         return panel;
+    }
+
+    public void paivitaAvaus(int x, int y) {
+        if (logiikka.isOnkomiinatavattu()) {
+            return;
+        }
+        logiikka.avaaruutu(x, y);
+        paivitaruudut();
+    }
+
+    public void paivitaLippu(int x, int y) {
+        if (logiikka.isOnkomiinatavattu()) {
+            return;
+        }
+        logiikka.lippu(x, y);
+        paivitaruudut();
+    }
+
+    private void paivitaruudut() {
+        for (int i = 0; i < korkeus; i++) {
+            for (int j = 0; j < leveys; j++) {
+                ruudut[i][j].setArvo(logiikka.kartta()[i][j].toString());
+            }
+        }
     }
 
 }
