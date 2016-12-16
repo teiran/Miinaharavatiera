@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import logiikka.Ruutu;
 import logiikka.PelinLogiikka;
-import static logiikka.Kartanluonti.kartanluonti;
+import static logiikka.Kartanluonti.kartanLuonti;
 
 /**
  * pyörittää graafista käyttöliitymää, logiikkaan ja valikon.
@@ -103,7 +103,7 @@ public class KayttoLiityma implements Runnable {
         valikko.paivita();
         container.add(valikko.getPanel());
         peli.paivita(korkeus, leveys);
-        Ruutu[][] f = kartanluonti(korkeus, leveys, miinojenmaara);
+        Ruutu[][] f = kartanLuonti(korkeus, leveys, miinojenmaara);
         logiikka = new PelinLogiikka(korkeus, leveys, f);
         for (int i = 0; i < korkeus; i++) {
             container.add(peli.luoRuudut(i));
@@ -142,7 +142,7 @@ public class KayttoLiityma implements Runnable {
       * @param oikeaVaiVasen numerosille että mitä nappulaa on painettu
       */
     public void paivitaAvaus(int x, int y, int oikeaVaiVasen) {
-        System.out.println(logiikka.muutaRuutua(x, y, oikeaVaiVasen));
+        logiikka.muutaRuutua(x, y, oikeaVaiVasen);
         paivitaRuudut();
     }
     

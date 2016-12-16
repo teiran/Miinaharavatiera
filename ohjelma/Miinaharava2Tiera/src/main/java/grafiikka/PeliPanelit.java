@@ -9,7 +9,7 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 import logiikka.PelinLogiikka;
 import logiikka.Ruutu;
-import static logiikka.Kartanluonti.kartanluonti;
+import static logiikka.Kartanluonti.kartanLuonti;
 
 /**
  * Paneli pelin grafiikalle (peliruuduille ja näiden kuutelioille).

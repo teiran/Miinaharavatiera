@@ -27,7 +27,7 @@ public class Kartanluonti {
      * @param miinojenMaara Miinojen määrä
      * @return palauttaa alustetun kartan
      */
-    public static Ruutu[][] kartanluonti(int korkeus, int leveys, int miinojenMaara) {
+    public static Ruutu[][] kartanLuonti(int korkeus, int leveys, int miinojenMaara) {
         Kartanluonti.korkeus = korkeus;
         Kartanluonti.leveys = leveys;
         Kartanluonti.miinojenMaara = miinojenMaara;

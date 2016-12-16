@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 7,
-             Errors: 11,
+      <title>File: 9,
+             Errors: 0,
              Warnings: 0,
              Infos: 0
       </title>
@@ -55,26 +55,26 @@ under the License.
                   0
                 </td>
                 <td>
-                  3
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#grafiikka.Kayttoliityma.java">grafiikka/Kayttoliityma.java</a>
-                </td>
-                <td>
                   0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  5
                 </td>
               </tr>
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#logiikka.Ruutu.java">logiikka/Ruutu.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#grafiikka.ValikkoPaneli.java">grafiikka/ValikkoPaneli.java</a>
                 </td>
                 <td>
                   0
@@ -97,7 +97,35 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#grafiikka.UusintaNappula.java">grafiikka/UusintaNappula.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#grafiikka.KayttoLiityma.java">grafiikka/KayttoLiityma.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                           <tr>
@@ -116,7 +144,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#grafiikka.Uusintanappula.java">grafiikka/Uusintanappula.java</a>
+                  <a href="${project.url}/checkstyle.html#grafiikka.PeliPanelit.java">grafiikka/PeliPanelit.java</a>
                 </td>
                 <td>
                   0
@@ -139,7 +167,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  2
+                  0
                 </td>
               </tr>
                       </tbody>

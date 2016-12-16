@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import static logiikka.Kartanluonti.kartanluonti;
+import static logiikka.Kartanluonti.kartanLuonti;
 
 /**
  *
@@ -46,7 +46,7 @@ public class logiikankayttoliitymaTest {
         System.out.println("avaaruutu1lippu");
         int x = 0;
         int y = 0;
-        Ruutu[][] k = kartanluonti(10, 10, 0);
+        Ruutu[][] k = kartanLuonti(10, 10, 0);
         PelinLogiikka instance = new PelinLogiikka(10, 10, k);
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -84,7 +84,7 @@ public class logiikankayttoliitymaTest {
     @Test
     public void testLippu() {
         System.out.println("avaaruutuMiina");
-        Ruutu[][] k = kartanluonti(10, 10, 100);
+        Ruutu[][] k = kartanLuonti(10, 10, 100);
         PelinLogiikka instance = new PelinLogiikka(10, 10, k);
         assertEquals(false, instance.kartta()[0][0].isOnkoAuki());
         for (int i = 0; i < 10; i++) {
@@ -110,7 +110,7 @@ public class logiikankayttoliitymaTest {
     @Test
     public void testKartta() {
         System.out.println("Tyhjaalue");
-        Ruutu[][] k = kartanluonti(10, 10, 0);
+        Ruutu[][] k = kartanLuonti(10, 10, 0);
         PelinLogiikka instance = new PelinLogiikka(10, 10, k);
         instance.muutaRuutua(0, 0, 1);
         for (int i = 0; i < 10; i++) {
@@ -126,7 +126,7 @@ public class logiikankayttoliitymaTest {
     @Test
     public void testIsOnkomiinatavattu() {
         System.out.println("Oikeat numerot");
-        Ruutu[][] k = kartanluonti(10, 10, 50);
+        Ruutu[][] k = kartanLuonti(10, 10, 50);
         PelinLogiikka instance = new PelinLogiikka(10, 10, k);
         int summ = 0;
         for (int i = 0; i < 10; i++) {
@@ -149,7 +149,7 @@ public class logiikankayttoliitymaTest {
     @Test
     public void testavaaRuudutJoissaEiLippua(){
         System.out.println("testaa 2 syöteet");
-        Ruutu [][] k = kartanluonti(10, 10, 39);
+        Ruutu [][] k = kartanLuonti(10, 10, 39);
         k[0][1].asetaMiina();
         k[1][1].asetaMiina();
         PelinLogiikka instance = new PelinLogiikka(10, 10, k);
@@ -158,7 +158,7 @@ public class logiikankayttoliitymaTest {
         instance.muutaRuutua(1, 0, 3);
         instance.muutaRuutua(0, 0, 2);
         assertEquals(true, instance.kartta()[0][1].onkoLippua());
-        k = kartanluonti(10, 10, 50);
+        k = kartanLuonti(10, 10, 50);
         instance = new PelinLogiikka(10, 10, k);
         instance.muutaRuutua(4, 5, 2);
         for (int i = 3; i < 6; i++) {
@@ -170,7 +170,7 @@ public class logiikankayttoliitymaTest {
     
     @Test
     public void testaonkoKaikkiRuudutAuki(){
-        Ruutu [][] k = kartanluonti(10, 10, 1);
+        Ruutu [][] k = kartanLuonti(10, 10, 1);
         PelinLogiikka instance = new PelinLogiikka(10, 10, k);
         int x = 0;
         int y = 0;
@@ -190,7 +190,7 @@ public class logiikankayttoliitymaTest {
         }
         assertEquals(false, instance.muutaRuutua(x2, y2, 1));
         assertEquals(true, instance.muutaRuutua(x, y, 3));
-        k = kartanluonti(10, 10, 100);
+        k = kartanLuonti(10, 10, 100);
         instance = new PelinLogiikka(10, 10, k);
         assertEquals(false, instance.muutaRuutua(0, 0, 1));
     }
