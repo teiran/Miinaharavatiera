@@ -1,5 +1,2 @@
 ##Käyttöohjeet
-Valitettavasti en saanut vielä mainclassin luokka polkua toimimaan mutta pian. Nyt peli on ladattava ja ajettava vaikka netbeamsin kautta.
-Kun ajat pelin joudut syöttämään teksiti käyttöliitymälle kuinka korkean pelin haluat, kuinka leveän ja kuinka monta miinaa.
-tämän jälkeen pääset pelaamaan voit avata ruudun oikealla hiiren nappulalla ja laittaa lipun ruutuun vasemmalla ruudun nappulalla.
-pelin alakulmassa on myös nappula siihen että voit aloittaa alussa valitsemasi pelin kaltaisen pelin uudelleen.
+aja tiedoton java -jar komennolla juuresta, tämän jälkeen ilmestyy valikko jossa merkkaat miinojen maaran miinojen maara kohdan alle, leveyden leveyden alle ja korkeuden korkeuden alle. tämän jälkeen painat uusi peli nappulaa ja peli ilmestyy. Peli toimii hiiren kolmella nappulalla oikea hiiren nappula avaa ruudun, vasen laittaa lipun ja hiiren rullaa painamalla avaa ruudun ja tämän vieruis ruudut joissa ei lippua. uuden pelin voit aina aloittaa yläreunassa olevalla nappulalla ja tekstikentii voit määrittää uuden korkeuden, leveyden tai miinojen määrän
