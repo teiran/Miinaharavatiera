@@ -23,3 +23,6 @@ parantelin koodia, en kerennyt tänään katsoa laajennuksia tulen katsomaan nii
 
 ## Kuudesviikko
 Sain uudenpelin aloittamisen korjattuu. Vieläkin käyttöliitymää tarvitsisi vähän hioa. Lisäksi en saanut mainclass polkua löydettä oikein joten se ei vielä toimi....
+
+## enne palautusta
+Peli toimii ja siinä ei ole bugeja, peliin saisi helposti laitettua ajastimen ja highsoren. Tällä viikolla parantelin pääasiassa käyttöliitymän sselkeyttä ja loin uuden ominaisuuden, keskinappulan joka avaa kaikki liputtomat nappulat ruudun vierestä.
