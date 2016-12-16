@@ -6,9 +6,10 @@
 package logiikka;
 
 /**
- * Logiikan käyttöliitymä joka saa sisäänsä ruudukon jossa kaikki ruudut ovat kiinni
- * Ruudukko sisältää kaikki ruudut ja päivittää näiden aukioloa ja lippuja.
- * 
+ * Logiikan käyttöliitymä joka saa sisäänsä ruudukon jossa kaikki ruudut ovat
+ * kiinni Ruudukko sisältää kaikki ruudut ja päivittää näiden aukioloa ja
+ * lippuja.
+ *
  * @author tiera
  */
 public class PelinLogiikka {
@@ -16,8 +17,10 @@ public class PelinLogiikka {
     private Ruutu[][] kartta;
     private int leveys;
     private int korkeus;
-    private boolean onkomiinatavattu;
+    private boolean onkoMiinatAvattu;
+
     /**
+     * Konstruktori logiikka päivittävälle luokalle. 
      * 
      * @param korkeus kentän korkeus
      * @param leveys kentän leveys
@@ -27,38 +30,95 @@ public class PelinLogiikka {
         kartta = z;
         this.korkeus = korkeus;
         this.leveys = leveys;
-        onkomiinatavattu = false;
+        onkoMiinatAvattu = false;
     }
+    
     /**
+     * metodi jota käyttöliitymä kutsuu muutaessan ruudun arvoa (pyyntö tullut grafiikan ruuduilta).
      * 
-     * @param x avattavan ruudun x-koordinaatti
-     * @param y avattavan ruudun y-koordinaatti
+     * @param x logiikan ja grafiikan taulukon korkeus suuntainen koordinaatti
+     * @param y logiikan ja grafiikan taulukon leveys suuntainen koordinaatti
+     * @param oikeaVaiVasen numerosille että mitä nappulaa on painettu
+     * @return palauttaa arvon voidaanko enää pelata tätä peliä vai ei
      */
-    public void avaaruutu(int x, int y) {
+    public boolean muutaRuutua(int x, int y, int oikeaVaiVasen) {
+        if (onkoMiinatAvattu) {
+            return false;
+        }
+        if (oikeaVaiVasen == 1) {
+            this.avaaRuutu(x, y);
+        } else if (oikeaVaiVasen == 2) {
+            this.avaaLaimmaisetRuudutJosEiLippua(x, y);
+        } else if (oikeaVaiVasen == 3) {
+            this.asetaLippuTaiPoistaLippu(x, y);
+        }
+        return onkoKaikkiRuudutAukiTaiLippu();
+    }
+    
+    /**
+     * Hiirenkeskipainiketta painettaessa avaa lähimmät ruudut joissa ei lippua (nopeutta pelaamista).
+     * 
+     * @param x logiikan ja grafiikan taulukon korkeus suuntainen koordinaatti
+     * @param y logiikan ja grafiikan taulukon leveys suuntainen koordinaatti
+     */
+    private void avaaLaimmaisetRuudutJosEiLippua(int x, int y) {
+        for (int rajax = Math.max(x - 1, 0); rajax < Math.min(x + 2, korkeus); rajax++) {
+            for (int rajay = Math.max(y - 1, 0); rajay < Math.min(y + 2, leveys); rajay++) {
+                avaaRuutu(rajax, rajay);
+            }
+        }
+    }
+
+    /**
+     * Avaaruudun jossa ei ole lippua eli vaihtoehtoisesti avaa miinan tai tyhjän ruudun.
+     * 
+     * @param x logiikan ja grafiikan taulukon korkeus suuntainen koordinaatti
+     * @param y v
+     */
+    private void avaaRuutu(int x, int y) {
         Ruutu k = kartta[x][y];
-        if (k.onkolippua()) {
+        if (k.onkoLippua()) {
             return;
         }
         if (k.isOnkoMiinaa()) {
-            onkomiinatavattu = true;
-            avaamiinat();
+            onkoMiinatAvattu = true;
+            avaaMiinat();
         } else {
-            avaatyhjaruututairuutujossaeiminaa(x, y);
+            avaaTyhjaRuutuTaiRuutuJossaEiMinaa(x, y);
         }
     }
     
-    public boolean onkoKaikkiRuudutAuki(){
+    /**
+     * Tutkii onko kaikki ruudut avattu tai onko peli pelattu loppuun tai onko osuttu miinaan.
+     * 
+     * @return jos peli on voitettu palautta true, muuten false
+     */
+
+    private boolean onkoKaikkiRuudutAukiTaiLippu() {
+        if (onkoMiinatAvattu) {
+            return false;
+        }
         for (Ruutu[] ruutus : kartta) {
             for (Ruutu ruutu : ruutus) {
-                if (!ruutu.isOnkoAuki()) {
+                if (ruutu.onkoLippua()) {
+                    if (!ruutu.isOnkoMiinaa()) {
+                        return false;
+                    }
+                } else if (!ruutu.isOnkoAuki()) {
                     return false;
                 }
+
             }
         }
         return true;
     }
 
-    private void avaamiinat() {
+    
+    /**
+     * Kun osutaan miinaa avataan kaikki miinat, tämä metodi hoitaa sen.
+     * 
+     */
+    private void avaaMiinat() {
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
                 if (kartta[i][j].isOnkoMiinaa()) {
@@ -68,24 +128,43 @@ public class PelinLogiikka {
         }
     }
 
-    public void lippu(int x, int y) {
+    /**
+     * asettaa tai poistaa lipun ruutuun.
+     * 
+     * @param x logiikan ja grafiikan taulukon korkeus suuntainen koordinaatti
+     * @param y logiikan ja grafiikan taulukon leveys suuntainen koordinaatti
+     */
+    private void asetaLippuTaiPoistaLippu(int x, int y) {
         kartta[x][y].asetaTaiPoistaLippu();
     }
-
-    private void avaatyhjaruututairuutujossaeiminaa(int x, int y) { // alempi(rekursiivinen osa ei toimi vielä)
+    
+    /**
+     * avaa ruudun jossa ei miinaa, myös jos on ruutu jonka vieressä ei ole miinaa tämä avaa ruudun ja kaikki sen vieruis ruudut sääntöjen mukaan (rekursiivisesti).
+     * 
+     * @param x logiikan ja grafiikan taulukon korkeus suuntainen koordinaatti
+     * @param y logiikan ja grafiikan taulukon leveys suuntainen koordinaatti
+     */
+    private void avaaTyhjaRuutuTaiRuutuJossaEiMinaa(int x, int y) { // alempi(rekursiivinen osa ei toimi vielä)
         kartta[x][y].avaaRuutu();
         if (kartta[x][y].getMiinojenLukumaaraYmparilla() == 0) {
-            avaatyhjaalue(x, y);
+            avaaTyhjaAlue(x, y);
         }
 
     }
-
-    private void avaatyhjaalue(int x, int y) {
-        for (int rajax = Math.max(x - 1, 0); rajax < Math.min(x + 2, leveys); rajax++) {
-            for (int rajay = Math.max(y - 1, 0); rajay < Math.min(y + 2, korkeus); rajay++) {
-                if (kartta[rajax][rajay].getMiinojenLukumaaraYmparilla() == 0 && !kartta[rajax][rajay].isOnkoAuki() && !kartta[rajax][rajay].onkolippua()) {
+    
+    /**
+     * jos on ruutu jonka vieressä ei ole miinaa tämä avaa ruudun ja kaikki sen vieruis ruudut sääntöjen mukaan (rekursiivisesti).
+     * 
+     * @param x logiikan ja grafiikan taulukon korkeus suuntainen koordinaatti
+     * @param y logiikan ja grafiikan taulukon leveys suuntainen koordinaatti
+     */
+    
+    private void avaaTyhjaAlue(int x, int y) {
+        for (int rajax = Math.max(x - 1, 0); rajax < Math.min(x + 2, korkeus); rajax++) {
+            for (int rajay = Math.max(y - 1, 0); rajay < Math.min(y + 2, leveys); rajay++) {
+                if (kartta[rajax][rajay].getMiinojenLukumaaraYmparilla() == 0 && !kartta[rajax][rajay].isOnkoAuki() && !kartta[rajax][rajay].onkoLippua()) {
                     kartta[rajax][rajay].avaaRuutu();
-                    avaatyhjaruututairuutujossaeiminaa(rajax, rajay);
+                    avaaTyhjaRuutuTaiRuutuJossaEiMinaa(rajax, rajay);
                 } else {
                     kartta[rajax][rajay].avaaRuutu();
                 }
@@ -93,13 +172,14 @@ public class PelinLogiikka {
 
         }
     }
-
+    
+/**
+ * palauttaa Ruutu kartan Kättöliitymälle.
+ * 
+ * @return Ruutu[][] 
+ */
     public Ruutu[][] kartta() {
         return kartta;
-    }
-
-    public boolean isOnkomiinatavattu() {
-        return onkomiinatavattu;
     }
 
 }

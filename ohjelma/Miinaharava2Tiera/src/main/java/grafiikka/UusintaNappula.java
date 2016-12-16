@@ -16,19 +16,29 @@ import javax.swing.JButton;
  *
  * @author tiera
  */
-public class Uusintanappula extends JButton implements MouseListener {
-    private final Kayttoliityma ka;
-
-    public Uusintanappula(Kayttoliityma ka) {
+public class UusintaNappula extends JButton implements MouseListener {
+    private final ValikkoPaneli ka;
+    
+    /**
+     * uudenpelin alottavan nappulan konstruktori.
+     * 
+     * @param ka linkki valikko palenliin
+     */
+    public UusintaNappula(ValikkoPaneli ka) {
         this.ka = ka;
         this.setText("uusipeli");
         this.addMouseListener(this);
     }
     
-
+    
+    /**
+     * kun nappulaa klikataan tämä kuuntelee ja luo uudenpelin valikon kautta joka konstruktorin.
+     * 
+     * @param e 
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
-        ka.paivitagrafiikkaa();
+        ka.uusiPeli();
     }
 
     @Override

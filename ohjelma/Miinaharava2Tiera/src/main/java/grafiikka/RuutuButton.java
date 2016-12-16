@@ -15,11 +15,18 @@ import javax.swing.JButton;
 public class RuutuButton extends JButton implements MouseListener {
     
     private String arvo;
-    private final Kayttoliityma k;
+    private final PeliPanelit k;
     private final int x;
     private final int y;
-
-    public RuutuButton(String arvo, Kayttoliityma k, int x, int y) {
+    /**
+     * Ruudun konstruktori.
+     * 
+     * @param arvo String arvo "mitä ruutu näyttää ulos"
+     * @param k linkki pelipaneliin
+     * @param x logiikan ja grafiikan taulukon korkeus suuntainen koordinaatti
+     * @param y  logiikan ja grafiikan taulukon leveys suuntainen koordinaatti
+     */
+    public RuutuButton(String arvo, PeliPanelit k, int x, int y) {
         this.arvo = arvo;
         this.k = k;
         this.x = x;
@@ -28,23 +35,33 @@ public class RuutuButton extends JButton implements MouseListener {
         muutaTextia();
     }
     
-
+    /**
+     * kun hiirtä painetaa tämä aktivoituu ja kutsuu paivitaAvaius metodia PeliPanelissa.
+     * 
+     * @param e hiirenkuuntelija
+     */
+    
     @Override
     public void mouseClicked(java.awt.event.MouseEvent e) {
-        if (e.getButton() == 1) {
-            k.paivitaAvaus(x, y);
-        } else if (e.getButton() == 3) {
-            k.paivitaLippu(x, y);
-        }
+        k.paivitaAvaus(x, y, e.getButton());
         
     }
     
-    public void setArvo(String g){
+    /**
+     * muuttaa ruudun arvoa ja tekstiä.
+     * 
+     * @param g uusi String muotoinen arvo
+     */
+    public void setArvo(String g) {
         arvo = g;
         muutaTextia();
     }
     
-    private void muutaTextia(){
+    /**
+     * muuttaa ruudun teksitä.
+     * 
+     */
+    private void muutaTextia() {
         this.setText(arvo);
     }
 

@@ -5,12 +5,8 @@
  */
 package miinaharava.miinaharava2tiera;
 
-import grafiikka.Kayttoliityma;
-import java.util.Scanner;
+import grafiikka.KayttoLiityma;
 import javax.swing.SwingUtilities;
-import logiikka.Ruutu;
-import logiikka.PelinLogiikka;
-import static logiikka.Kartanluonti.Kartanluonti;
 
 /**
  *  MainClass joka ajaa perus ohjelman
@@ -23,7 +19,7 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Kayttoliityma kayttoliittyma = new Kayttoliityma();
+        KayttoLiityma kayttoliittyma = new KayttoLiityma();
         SwingUtilities.invokeLater(kayttoliittyma);
     }
 

@@ -5,13 +5,13 @@
  */
 package logiikka;
 
-import static logiikka.Kartanluonti.Kartanluonti;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static logiikka.Kartanluonti.kartanluonti;
 
 /**
  *
@@ -44,7 +44,7 @@ public class KartanluontiTest {
     @Test
     public void testGetKartta() {
         System.out.println("getKartta");
-        Ruutu[][] instance = Kartanluonti(10, 10, 50);
+        Ruutu[][] instance = kartanluonti(10, 10, 50);
         int s = 0;
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -61,7 +61,7 @@ public class KartanluontiTest {
         System.out.println("getKartta2");
         int korkeus = 10;
         int leveys = 10;
-        Ruutu[][] instance = Kartanluonti(korkeus, leveys, 50);
+        Ruutu[][] instance = kartanluonti(korkeus, leveys, 50);
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (instance[i][j].isOnkoMiinaa()) {

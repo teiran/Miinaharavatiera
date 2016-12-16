@@ -27,8 +27,8 @@ public class Ruutu {
         lippu = false;
     }
     /**
-     * Asettaa Lipun ruutuun jos sitä ei ole sillä tai ottaa sen pois jos se on sillä
-     * Tarkistaa on ruutu auki, eli pystyykö laittamaan lippua
+     * Asettaa Lipun ruutuun jos sitä ei ole sillä tai ottaa sen pois jos se on sillä Tarkistaa on ruutu auki, eli pystyykö laittamaan lippua.
+     * 
      */
     public void asetaTaiPoistaLippu() {
         if (onkoAuki) {
@@ -43,8 +43,9 @@ public class Ruutu {
     }
     /**
      * Asettaa miinan ruutuun, kettää alustaessa.
+     * 
      */
-    public void asetamiina() {
+    public void asetaMiina() {
         onkoMiinaa = true;
     }
     
@@ -53,18 +54,19 @@ public class Ruutu {
      * @return palauttaa onko ruudussa lippua 
      */
 
-    public boolean onkolippua() {
+    public boolean onkoLippua() {
         return lippu;
     }
     /**
      * 
      * @param miinat syöttää miinojen määrän ruutuun (kenttää alustaessa) 
      */
-    public void annamiinojenmaara(int miinat) {
+    public void annaMiinojenMaara(int miinat) {
         miinojenLukumaaraYmparilla = miinat;
     }
     /**
-     * avaa ruudun jos ruudussa ei ole lippua
+     * avaa ruudun jos ruudussa ei ole lippua.
+     * 
      */
     public void avaaRuutu() {
         if (!lippu) {
